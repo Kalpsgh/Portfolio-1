@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Kalpesh Patil | Full Stack Developer</title>
+
+    <!-- Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: "Inter", sans-serif;
+        }
+
+        :root {
+            --bg: #050816;
+            --card: rgba(255, 255, 255, 0.05);
+            --text: #ffffff;
+            --gray: #b4b4b4;
+            --main: #7c3aed;
+            --second: #06b6d4;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: var(--main);
+            filter: blur(180px);
+            opacity: .15;
+            top: -150px;
+            right: -150px;
+            z-index: -1;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            background: var(--second);
+            filter: blur(180px);
+            opacity: .12;
+            bottom: -150px;
+            left: -150px;
+            z-index: -1;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1300px;
+            margin: auto;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* NAVBAR */
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(5, 8, 22, .75);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav {
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--second);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: .3s;
+            font-size: .95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--second);
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .hero-text h3 {
+            color: var(--second);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .hero-text h1 {
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .hero-text h1 span {
+            background: linear-gradient(to right, #7c3aed, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            color: var(--gray);
+            line-height: 1.9;
+            margin-bottom: 2rem;
+            max-width: 650px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, var(--main), var(--second));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border);
+            color: white;
+            background: rgba(255, 255, 255, .04);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, .08);
+        }
+
+        .socials {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .socials a {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: .3s;
+        }
+
+        .socials a:hover {
+            background: linear-gradient(to right, var(--main), var(--second));
+            transform: translateY(-5px);
+        }
+
+        /* HERO IMAGE */
+
+        .hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image img {
+    width: 320px;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 30px;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+
+        .floating-card {
+            position: absolute;
+            padding: 1rem 1.3rem;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, .05);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .card1 {
+            top: 10%;
+            left: -10%;
+        }
+
+        .card2 {
+            bottom: 10%;
+            right: -10%;
+        }
+
+        .floating-card h4 {
+            margin-bottom: 5px;
+        }
+
+        .floating-card p {
+            color: var(--gray);
+            font-size: .9rem;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* TITLES */
+
+        .title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .title span {
+            color: var(--second);
+        }
+
+        .subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: auto auto 4rem;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* ABOUT */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .about-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 24px;
+            transition: .3s;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .about-card i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--second);
+        }
+
+        .about-card p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* SKILLS */
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 22px;
+            text-align: center;
+            transition: .3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill i {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--main);
+        }
+
+        /* PROJECTS */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project {
+            background: var(--card);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: .3s;
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+        }
+
+        .project img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* EXPERIENCE */
+
+        .timeline {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .timeline-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 24px;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* CONTACT */
+
+        form {
+            max-width: 800px;
+            margin: auto;
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        input,
+        textarea {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 1rem;
+            border-radius: 16px;
+            color: white;
+            outline: none;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 30px;
+            text-align: center;
+            color: var(--gray);
+            border-top: 1px solid var(--border);
+        }
+
+        /* MOBILE */
+
+        @media(max-width:950px) {
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 3.5rem;
+            }
+            .hero-image img {
+    width: 260px;
+    height: 340px;
+}
+
+            .buttons,
+            .socials {
+                justify-content: center;
+            }
+
+            .floating-card {
+                display: none;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media(max-width:600px) {
+
+            section {
+                padding: 80px 0;
+            }
+
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+
+            .title {
+                font-size: 2.2rem;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header>
+
+        <div class="container nav">
+
+            <a href="#" class="logo">
+                Kalpesh<span>.</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </div>
+
+    </header>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="container hero-content">
+
+            <div class="hero-text">
+
+                <h3>🚀 Full Stack & Backend Developer</h3>
+
+                <h1>
+                    Hi, I'm <span>Kalpesh Patil</span>
+                </h1>
+
+                <p>
+                    Computer Engineering undergraduate passionate about
+                    building scalable full stack applications and modern
+                    web experiences using React.js, Node.js, Java and SQL.
+                </p>
+
+                <div class="buttons">
+
+                    <a href="#contact" class="btn btn-primary">
+                        Hire Me
+                    </a>
+
+                    <a href="Company_resume_1.pdf"
+   download
+   class="btn btn-outline">
+
+   Download Resume
+
+</a>
+
+                </div>
+
+                <div class="socials">
+
+                    <a href="https://github.com/Kalpsgh">
+                        <i class='bx bxl-github'></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/kalpesh-patil-00b684245/">
+                        <i class='bx bxl-linkedin'></i>
+                    </a>
+
+                    <a href="mailto:kalpeshpatil8199@gmail.com">
+                        <i class='bx bx-envelope'></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="hero-image">
+
+                <img src="Image.png"
+                    alt="profile">
+
+                <div class="floating-card card1">
+                    <h4>Full Stack</h4>
+                    <p>Developer</p>
+                </div>
+
+                <div class="floating-card card2">
+                    <h4>Backend</h4>
+                    <p>Specialist</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <div class="container">
+
+            <h2 class="title">
+                About <span>Me</span>
+            </h2>
+
+            <p class="subtitle">
+                Computer Engineering student from Pune with hands-on experience
+                in full stack development and backend systems. Passionate about
+                solving real-world problems through scalable applications.
+            </p>
+
+            <div class="about-grid">
+
+                <div class="about-card">
+
+                    <i class='bx bx-code-alt'></i>
+
+                    <h3>Full Stack Development</h3>
+
+                    <p>
+                        Building complete web applications using MERN Stack,
+                        Java backend technologies and REST APIs.
+                    </p>
+
+                </div>
+
+                <div class="about-card">
+
+                    <i class='bx bx-server'></i>
+
+                    <h3>Backend Development</h3>
+
+                    <p>
+                        Creating secure backend systems using Node.js,
+                        Express.js, JWT Authentication and databases.
+                    </p>
+
+                </div>
+
+                <div class="about-card">
+
+                    <i class='bx bx-mobile-alt'></i>
+
+                    <h3>Responsive UI</h3>
+
+                    <p>
+                        Developing clean, responsive and optimized interfaces
+                        for mobile and desktop devices.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SKILLS -->
+
+    <section id="skills">
+
+        <div class="container">
+
+            <h2 class="title">
+                Technical <span>Skills</span>
+            </h2>
+
+            <p class="subtitle">
+                Technologies and tools I use to build scalable applications.
+            </p>
+
+            <div class="skills">
+
+                <div class="skill">
+                    <i class='bx bxl-java'></i>
+                    <h3>Java</h3>
+                </div>
+
+                <div class="skill">
+                    <i class='bx bx-data'></i>
+                    <h3>SQL & MySQL</h3>
+                </div>
+
+                <div class="skill">
+                    <i class='bx bxl-javascript'></i>
+                    <h3>JavaScript</h3>
+                </div>
+
+                <div class="skill">
+                    <i class='bx bxl-react'></i>
+                    <h3>React.js</h3>
+                </div>
+
+                <div class="skill">
+                    <i class='bx bxl-tailwind-css'></i>
+                    <h3>Tailwind CSS</h3>
+                </div>
+
+                <div class="skill">
+                    <i class='bx bxl-nodejs'></i>
+                    <h3>Node.js</h3>
+                </div>
+
+                <div class="skill">
+                    <i class='bx bx-server'></i>
+                    <h3>Express.js</h3>
+                </div>
+
+                <div class="skill">
+                    <i class='bx bxl-github'></i>
+                    <h3>Git & GitHub</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PROJECTS -->
+
+    <section id="projects">
+
+        <div class="container">
+
+            <h2 class="title">
+                Featured <span>Projects</span>
+            </h2>
+
+            <p class="subtitle">
+                Real-world projects built using modern technologies. :contentReference[oaicite:0]{index=0}
+            </p>
+
+            <div class="projects">
+
+                <div class="project">
+
+                    <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4"
+                        alt="">
+
+                    <div class="project-content">
+
+                        <h3>Forever E-Commerce</h3>
+
+                        <p>
+                            Full stack e-commerce platform using React.js,
+                            Node.js, Express.js, MongoDB, JWT and Stripe payment integration.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="project">
+
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+                        alt="">
+
+                    <div class="project-content">
+
+                        <h3>BookMyCNG</h3>
+
+                        <p>
+                            Smart CNG reservation platform built with Java,
+                            JSP, Servlets, MySQL, JWT and JDBC.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="project">
+
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f"
+                        alt="">
+
+                    <div class="project-content">
+
+                        <h3>AgencyAI</h3>
+
+                        <p>
+                            Modern React.js frontend application with Vite
+                            and Tailwind CSS deployed using Render.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- EXPERIENCE -->
+
+    <section id="experience">
+
+        <div class="container">
+
+            <h2 class="title">
+                Work <span>Experience</span>
+            </h2>
+
+            <p class="subtitle">
+                Professional internship experience in software development.
+            </p>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+
+                    <h3>
+                        Software Developer Intern —
+                        Hruta Solutions Pvt. Ltd.
+                    </h3>
+
+                    <p>
+                        Worked on frontend and backend development using Java,
+                        JSP, Servlets and MySQL. Implemented REST functionalities,
+                        database operations and business logic in team projects. :contentReference[oaicite:1]{index=1}
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+    <div class="container">
+
+        <h2 class="title">
+            Contact <span>Me</span>
+        </h2>
+
+        <p class="subtitle">
+            Interested in working together?
+            Feel free to contact me anytime.
+        </p>
+
+        <form action="https://formsubmit.co/kalpeshpatil8199@gmail.com"
+              method="POST">
+
+            <!-- Disable Captcha -->
+
+            <input type="hidden"
+                   name="_captcha"
+                   value="false">
+
+            <!-- Email Subject -->
+
+            <input type="hidden"
+                   name="_subject"
+                   value="New Portfolio Message!">
+
+            <!-- Success Message -->
+
+            <input type="hidden"
+                   name="_next"
+                   value="https://yourwebsite.com">
+
+            <!-- Name -->
+
+            <input type="text"
+                   name="name"
+                   placeholder="Your Name"
+                   required>
+
+            <!-- Email -->
+
+            <input type="email"
+                   name="email"
+                   placeholder="Your Email"
+                   required>
+
+            <!-- Message -->
+
+            <textarea name="message"
+                      rows="6"
+                      placeholder="Your Message"
+                      required></textarea>
+
+            <!-- Button -->
+
+            <button type="submit"
+                    class="btn btn-primary">
+
+                Send Message
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 Kalpesh Patil • Full Stack Developer
+
+    </footer>
+
+</body>
+
+</html>
